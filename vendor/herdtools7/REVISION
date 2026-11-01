@@ -1,0 +1,5 @@
+herdtools7 7.58
+https://github.com/herd/herdtools7
+commit 1ca343e16a2038e406d1ac674e7e3a1b722b36c7
+Unmodified upstream native herd executable, stripped debug symbols.
+SC/TSO models and herd/libdir copied unmodified.

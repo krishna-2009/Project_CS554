@@ -1,0 +1,67 @@
+% Generated from completed experiments; do not edit counts by hand.
+\begin{tabular}{llrr}
+\toprule Test & Model & Positive & Negative \\
+\midrule
+sb & SC & 0 & 3 \\
+sb\_mfence & SC & 0 & 3 \\
+mp & SC & 0 & 3 \\
+twop2w & SC & 0 & 3 \\
+dekker\_entry & SC & 0 & 3 \\
+dekker\_entry\_mfence & SC & 0 & 3 \\
+peterson\_unfenced & SC & 0 & 8 \\
+peterson\_both\_zero & SC & 0 & 8 \\
+peterson\_mfence & SC & 0 & 8 \\
+sb\_rmw\_fence & SC & 0 & 6 \\
+peterson\_rmw\_fence & SC & 0 & 14 \\
+peterson\_rmw\_fence\_both\_zero & SC & 0 & 14 \\
+peterson\_turn\_rmw & SC & 0 & 10 \\
+sb & TSO & 1 & 3 \\
+sb\_mfence & TSO & 0 & 3 \\
+mp & TSO & 0 & 3 \\
+twop2w & TSO & 0 & 3 \\
+dekker\_entry & TSO & 1 & 3 \\
+dekker\_entry\_mfence & TSO & 0 & 3 \\
+peterson\_unfenced & TSO & 6 & 10 \\
+peterson\_both\_zero & TSO & 4 & 12 \\
+peterson\_mfence & TSO & 0 & 8 \\
+sb\_rmw\_fence & TSO & 0 & 6 \\
+peterson\_rmw\_fence & TSO & 0 & 14 \\
+peterson\_rmw\_fence\_both\_zero & TSO & 0 & 14 \\
+peterson\_turn\_rmw & TSO & 0 & 10 \\
+sb & RA & 1 & 3 \\
+mp & RA & 0 & 3 \\
+twop2w & RA & 1 & 3 \\
+dekker\_entry & RA & 1 & 3 \\
+peterson\_unfenced & RA & 6 & 10 \\
+peterson\_both\_zero & RA & 4 & 12 \\
+sb\_rmw\_fence & RA & 0 & 4 \\
+peterson\_rmw\_fence & RA & 2 & 10 \\
+peterson\_rmw\_fence\_both\_zero & RA & 0 & 12 \\
+peterson\_turn\_rmw & RA & 0 & 8 \\
+sb & SRA & 1 & 3 \\
+mp & SRA & 0 & 3 \\
+twop2w & SRA & 0 & 3 \\
+dekker\_entry & SRA & 1 & 3 \\
+peterson\_unfenced & SRA & 6 & 10 \\
+peterson\_both\_zero & SRA & 4 & 12 \\
+sb\_rmw\_fence & SRA & 0 & 4 \\
+peterson\_rmw\_fence & SRA & 2 & 10 \\
+peterson\_rmw\_fence\_both\_zero & SRA & 0 & 12 \\
+peterson\_turn\_rmw & SRA & 0 & 8 \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{lrrrr}
+\toprule CDSChecker harness & Complete & Buggy & Infeasible & Total \\
+\midrule
+peterson\_entry\_relaxed & 7 & 5 & 0 & 12 \\
+peterson\_entry\_acqrel & 7 & 5 & 0 & 12 \\
+peterson\_entry\_seqcst & 8 & 0 & 0 & 8 \\
+peterson\_race\_relaxed & 17 & 39 & 48 & 104 \\
+peterson\_race\_acqrel & 37 & 7 & 0 & 44 \\
+peterson\_race\_seqcst & 34 & 0 & 0 & 34 \\
+spinlock\_acqrel & 4 & 0 & 2 & 6 \\
+ticket\_acqrel & 8 & 0 & 6 & 16 \\
+spsc\_queue\_ra & 2 & 0 & 0 & 2 \\
+\bottomrule
+\end{tabular}

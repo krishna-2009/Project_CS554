@@ -1,0 +1,13 @@
+Test sb_mfence Allowed
+States 3
+0:EAX=0; 1:EAX=1;
+0:EAX=1; 1:EAX=0;
+0:EAX=1; 1:EAX=1;
+No
+Witnesses
+Positive: 0 Negative: 3
+Condition exists (0:EAX=0 /\ 1:EAX=0)
+Observation sb_mfence Never 0 3
+Time sb_mfence 0.00
+Hash=7cc3e1103a0ab46aef94eecf9b04c266
+

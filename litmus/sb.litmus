@@ -1,0 +1,7 @@
+X86 sb
+{ flag0=0; flag1=0; turn=0; x=0; y=0; }
+P0 | P1 ;
+ MOV [x],$1           | MOV [y],$1           ;
+ MOV EAX,[y]          | MOV EAX,[x]          ;
+exists
+(0:EAX=0 /\ 1:EAX=0)

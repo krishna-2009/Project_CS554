@@ -1,0 +1,7 @@
+X86 twop2w
+{ x=0; y=0; f=0; flag0=0; flag1=0; turn=0; }
+P0 | P1 ;
+ MOV [x],$1              | MOV [y],$1              ;
+ MOV [y],$2              | MOV [x],$2              ;
+exists
+(x=1 /\ y=1)

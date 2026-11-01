@@ -1,0 +1,14 @@
+Test peterson_both_zero Allowed
+States 4
+0:EAX=0; 1:EAX=0;
+0:EAX=0; 1:EAX=1;
+0:EAX=1; 1:EAX=0;
+0:EAX=1; 1:EAX=1;
+Ok
+Witnesses
+Positive: 4 Negative: 12
+Condition exists (0:EAX=0 /\ 1:EAX=0)
+Observation peterson_both_zero Sometimes 4 12
+Time peterson_both_zero 0.01
+Hash=f04c844ec7b6f0b9747fb6465ad391fb
+

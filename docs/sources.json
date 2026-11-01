@@ -1,0 +1,79 @@
+{
+  "sources": [
+    {
+      "id": "lahav2016",
+      "title": "Taming Release-Acquire Consistency",
+      "authors": [
+        "Ori Lahav",
+        "Nick Giannarakis",
+        "Viktor Vafeiadis"
+      ],
+      "venue": "POPL 2016",
+      "url": "https://plv.mpi-sws.org/sra/full.pdf",
+      "relevant_parts": [
+        "Definitions 4, 5, 8",
+        "Proposition 2",
+        "Sections 5 and 5.1"
+      ]
+    },
+    {
+      "id": "herd_manual",
+      "title": "Simulating memory models with herd7",
+      "url": "https://diy.inria.fr/doc/herd.html",
+      "relevant_parts": [
+        "Sections 14.1 and 14.2",
+        "Output interpretation and model selection"
+      ]
+    },
+    {
+      "id": "herd_sc",
+      "title": "Upstream sc.cat",
+      "url": "https://github.com/herd/herdtools7/blob/1ca343e16a2038e406d1ac674e7e3a1b722b36c7/herd/libdir/sc.cat",
+      "note": "Pinned model source used in the experiment suite."
+    },
+    {
+      "id": "herd_tso",
+      "title": "Upstream x86tso.cat",
+      "url": "https://github.com/herd/herdtools7/blob/1ca343e16a2038e406d1ac674e7e3a1b722b36c7/herd/libdir/x86tso.cat",
+      "note": "Pinned model source used in the experiment suite."
+    },
+    {
+      "id": "cds_readme",
+      "title": "CDSChecker source and README",
+      "url": "https://github.com/computersforpeace/model-checker",
+      "relevant_parts": [
+        "Running your own code",
+        "End of Execution Summary",
+        "Other Notes and Pitfalls"
+      ]
+    },
+    {
+      "id": "cds_paper",
+      "title": "A Practical Approach for Model Checking C/C++11 Code",
+      "authors": [
+        "Brian Norris",
+        "Brian Demsky"
+      ],
+      "url": "https://plrg.eecs.uci.edu/publications/toplas16.pdf",
+      "relevant_parts": [
+        "Section 1.3 Limitations"
+      ]
+    },
+    {
+      "id": "c11_draft",
+      "title": "C11 Committee Draft N1570",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "relevant_parts": [
+        "5.1.2.4 paragraph 25",
+        "7.17.7.1",
+        "7.17.7.2"
+      ]
+    },
+    {
+      "id": "course_fa26",
+      "title": "CS 554 Fall 2026 project requirements",
+      "url": "https://www.cs.uic.edu/~mansky/teaching/cs554/fa26/project.html",
+      "note": "Check-in: November 13, end of day. Final project: December 4, 11:59 PM."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "count_unit": "distinct observed register projections",
+  "comparisons": [
+    {
+      "model": "SC",
+      "test": "sb",
+      "equal_final_register_sets": true,
+      "register_projections": 3
+    },
+    {
+      "model": "TSO",
+      "test": "sb",
+      "equal_final_register_sets": true,
+      "register_projections": 4
+    },
+    {
+      "model": "SC",
+      "test": "sb_mfence",
+      "equal_final_register_sets": true,
+      "register_projections": 3
+    },
+    {
+      "model": "TSO",
+      "test": "sb_mfence",
+      "equal_final_register_sets": true,
+      "register_projections": 3
+    },
+    {
+      "model": "SC",
+      "test": "peterson_unfenced",
+      "equal_final_register_sets": true,
+      "register_projections": 7
+    },
+    {
+      "model": "TSO",
+      "test": "peterson_unfenced",
+      "equal_final_register_sets": true,
+      "register_projections": 12
+    },
+    {
+      "model": "SC",
+      "test": "peterson_mfence",
+      "equal_final_register_sets": true,
+      "register_projections": 7
+    },
+    {
+      "model": "TSO",
+      "test": "peterson_mfence",
+      "equal_final_register_sets": true,
+      "register_projections": 7
+    }
+  ]
+}

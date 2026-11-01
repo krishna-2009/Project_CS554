@@ -1,0 +1,242 @@
+Program output from execution 1:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  2 @ clock  14
+    Access 2: write in thread  3 @ clock  17
+
+Execution trace 1: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     acquire        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    atomic write    release        0x404018   0                       ( 0,  5, 16)
+17   3    atomic read     acquire        0x404020   0x1                 10  ( 0,  8, 10, 17)
+HASH 931684937
+------------------------------------------------------------------------------------
+
+Program output from execution 2:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  2 @ clock  14
+    Access 2: write in thread  3 @ clock  17
+
+Execution trace 2: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     acquire        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    atomic write    release        0x404018   0                       ( 0,  5, 16)
+17   3    atomic read     acquire        0x404020   0                   13  ( 0,  8,  0, 17)
+HASH 931684943
+------------------------------------------------------------------------------------
+
+Program output from execution 3:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  2 @ clock  14
+    Access 2: write in thread  3 @ clock  17
+
+Execution trace 3: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     acquire        0x404018   0x1                 7   ( 0,  8,  7, 15)
+16   2    atomic write    release        0x404018   0                       ( 0,  5, 16)
+17   3    atomic read     acquire        0x404020   0x1                 10  ( 0,  8, 10, 17)
+HASH 931685197
+------------------------------------------------------------------------------------
+
+Program output from execution 6:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  2 @ clock  14
+    Access 2: write in thread  3 @ clock  21
+
+Execution trace 6: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     acquire        0x404018   0x1                 7   ( 0,  8,  7, 15)
+16   2    atomic write    release        0x404018   0                       ( 0,  5, 16)
+17   3    atomic read     acquire        0x404020   0                   13  ( 0,  8,  7, 17)
+18   2    thread finish   seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5, 18)
+19   3    atomic read     acquire        0x404018   0x1                 7   ( 0,  8,  7, 19)
+20   1    thread join     seq_cst  0x770149d4dc00   0x2                     ( 0, 20, 18)
+21   3    atomic read     acquire        0x404020   0x1                 10  ( 0,  8, 10, 21)
+HASH 2981694095
+------------------------------------------------------------------------------------
+
+Program output from execution 10:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  2 @ clock  14
+    Access 2: write in thread  3 @ clock  17
+
+Execution trace 10: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0                   13  ( 0,  8, 14, 13)
+15   3    atomic read     acquire        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    atomic write    release        0x404018   0                       ( 0,  8, 16, 13)
+17   3    atomic read     acquire        0x404020   0                   13  ( 0,  8,  0, 17)
+HASH 931688441
+------------------------------------------------------------------------------------
+
+Program output from execution 16:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  3 @ clock  17
+    Access 2: write in thread  2 @ clock  18
+
+Execution trace 16: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0x1                 11  ( 0,  8, 12, 11)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0x1                 10  ( 0,  8, 14, 11)
+15   3    atomic read     acquire        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    atomic read     acquire        0x40401c   0x1                 11  ( 0,  8, 16, 11)
+17   3    atomic read     acquire        0x404020   0                   13  ( 0,  8,  0, 17)
+18   2    atomic read     acquire        0x404020   0                   13  ( 0,  8, 18, 13)
+HASH 2347755489
+------------------------------------------------------------------------------------
+
+Program output from execution 34:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Data race detected @ address 0x404024:
+    Access 1: write in thread  2 @ clock  14
+    Access 2: write in thread  3 @ clock  17
+
+Execution trace 34: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x770149d4d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x77014914b6e0   0x77014914b680          ( 0,  5)
+6    2    thread start    seq_cst  0x770149d4dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    release        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x77014914b6e8   0x77014914b680          ( 0,  8)
+9    3    thread start    seq_cst  0x770149d4e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    release        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    release        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     acquire        0x40401c   0x1                 11  ( 0,  8, 12, 11)
+13   3    atomic write    release        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     acquire        0x404020   0                   13  ( 0,  8, 14, 13)
+15   3    atomic read     acquire        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    atomic write    release        0x404018   0                       ( 0,  8, 16, 13)
+17   3    atomic read     acquire        0x404020   0                   13  ( 0,  8,  0, 17)
+HASH 931954616
+------------------------------------------------------------------------------------
+
+******* Model-checking complete: *******
+Number of complete, bug-free executions: 37
+Number of redundant executions: 0
+Number of buggy executions: 7
+Number of infeasible executions: 0
+Total executions: 44

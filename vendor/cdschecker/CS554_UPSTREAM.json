@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/computersforpeace/model-checker",
+  "revision": "5c4efe5cd8bdfe1e85138396109876a121ca61d1",
+  "source_patch": "scripts/patches/cdschecker-bootstrap.patch",
+  "license": "GPL-2.0; see LICENSE"
+}

@@ -1,0 +1,6 @@
+******* Model-checking complete: *******
+Number of complete, bug-free executions: 34
+Number of redundant executions: 0
+Number of buggy executions: 0
+Number of infeasible executions: 0
+Total executions: 34

@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrr}
+\toprule Entry test / calibration & SC & TSO & RA & SRA \\
+\midrule
+Peterson: plain stores & 0 & 6 & 6 & 6 \\
+Peterson: MFENCE & 0 & 0 & -- & -- \\
+Peterson: dummy RMW & 0 & 0 & 2 & 2 \\
+Peterson: turn RMW & 0 & 0 & 0 & 0 \\
+Dekker doorway & 0 & 1 & 1 & 1 \\
+2+2W calibration & 0 & 0 & 1 & 0 \\
+\bottomrule
+\end{tabular}

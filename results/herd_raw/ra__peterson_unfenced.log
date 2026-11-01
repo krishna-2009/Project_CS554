@@ -1,0 +1,22 @@
+Test peterson_unfenced Allowed
+States 12
+0:EAX=0; 0:EBX=0; 1:EAX=0; 1:EBX=0;
+0:EAX=0; 0:EBX=0; 1:EAX=1; 1:EBX=0;
+0:EAX=0; 0:EBX=1; 1:EAX=0; 1:EBX=0;
+0:EAX=0; 0:EBX=1; 1:EAX=0; 1:EBX=1;
+0:EAX=0; 0:EBX=1; 1:EAX=1; 1:EBX=0;
+0:EAX=0; 0:EBX=1; 1:EAX=1; 1:EBX=1;
+0:EAX=1; 0:EBX=0; 1:EAX=0; 1:EBX=0;
+0:EAX=1; 0:EBX=0; 1:EAX=1; 1:EBX=0;
+0:EAX=1; 0:EBX=1; 1:EAX=0; 1:EBX=0;
+0:EAX=1; 0:EBX=1; 1:EAX=0; 1:EBX=1;
+0:EAX=1; 0:EBX=1; 1:EAX=1; 1:EBX=0;
+0:EAX=1; 0:EBX=1; 1:EAX=1; 1:EBX=1;
+Ok
+Witnesses
+Positive: 6 Negative: 10
+Condition exists ((0:EAX=0 \/ 0:EBX=0) /\ (1:EAX=0 \/ 1:EBX=1))
+Observation peterson_unfenced Sometimes 6 10
+Time peterson_unfenced 0.01
+Hash=439d247aecc71a67c3058b954e6e268a
+

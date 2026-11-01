@@ -1,0 +1,13 @@
+Test peterson_rmw_fence_both_zero Allowed
+States 3
+0:EAX=0; 1:EAX=1;
+0:EAX=1; 1:EAX=0;
+0:EAX=1; 1:EAX=1;
+No
+Witnesses
+Positive: 0 Negative: 14
+Condition exists (0:EAX=0 /\ 1:EAX=0)
+Observation peterson_rmw_fence_both_zero Never 0 14
+Time peterson_rmw_fence_both_zero 0.05
+Hash=1d791a0312afd5e961549bbde96fd960
+

@@ -1,0 +1,12 @@
+{
+  "method": "Clean archive extraction followed by the complete experiment pipeline and report build.",
+  "command": "python3 scripts/run_experiments.py --graphs --pdf",
+  "exit_code": 0,
+  "herd_completed_runs": 46,
+  "cds_completed_harnesses": 9,
+  "independent_exact_register_set_comparisons": 8,
+  "same_herd_counts_after_extraction": true,
+  "same_cds_counts_after_clean_rebuild": true,
+  "checkin_pages": 2,
+  "pdf_visual_review": "Two pages; no clipping, overlap, or missing glyphs."
+}

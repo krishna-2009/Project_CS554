@@ -1,0 +1,13 @@
+Test dekker_entry Allowed
+States 3
+0:EAX=0; 1:EAX=1;
+0:EAX=1; 1:EAX=0;
+0:EAX=1; 1:EAX=1;
+No
+Witnesses
+Positive: 0 Negative: 3
+Condition exists (0:EAX=0 /\ 1:EAX=0)
+Observation dekker_entry Never 0 3
+Time dekker_entry 0.00
+Hash=f50c3cdbb878260b83a6a8fc1314b5c3
+

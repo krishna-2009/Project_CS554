@@ -1,0 +1,181 @@
+Program output from execution 1:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Program has hit assertion in file /home/krishna-patel/Downloads/CS554 Project/cdschecker_tests/peterson_entry.h at line 24
+
+
+Execution trace 1: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x78bb8654d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x78bb8594b6e0   0x78bb8594b680          ( 0,  5)
+6    2    thread start    seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    relaxed        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x78bb8594b6e8   0x78bb8594b680          ( 0,  8)
+9    3    thread start    seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    relaxed        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    relaxed        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     relaxed        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    relaxed        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     relaxed        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     relaxed        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    thread finish   seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5, 16)
+17   3    atomic read     relaxed        0x404020   0x1                 10  ( 0,  8,  0, 17)
+18   1    thread join     seq_cst  0x78bb8654dc00   0x2                     ( 0, 18, 16)
+19   3    thread finish   seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0, 19)
+20   1    thread join     seq_cst  0x78bb8654e020   0x3                     ( 0, 20, 16, 19)
+HASH 1668288401
+------------------------------------------------------------------------------------
+
+Program output from execution 2:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Program has hit assertion in file /home/krishna-patel/Downloads/CS554 Project/cdschecker_tests/peterson_entry.h at line 24
+
+
+Execution trace 2: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x78bb8654d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x78bb8594b6e0   0x78bb8594b680          ( 0,  5)
+6    2    thread start    seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    relaxed        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x78bb8594b6e8   0x78bb8594b680          ( 0,  8)
+9    3    thread start    seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    relaxed        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    relaxed        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     relaxed        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    relaxed        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     relaxed        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     relaxed        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    thread finish   seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5, 16)
+17   3    atomic read     relaxed        0x404020   0                   13  ( 0,  8,  0, 17)
+18   1    thread join     seq_cst  0x78bb8654dc00   0x2                     ( 0, 18, 16)
+19   3    thread finish   seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0, 19)
+20   1    thread join     seq_cst  0x78bb8654e020   0x3                     ( 0, 20, 16, 19)
+HASH 1668284967
+------------------------------------------------------------------------------------
+
+Program output from execution 3:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Program has hit assertion in file /home/krishna-patel/Downloads/CS554 Project/cdschecker_tests/peterson_entry.h at line 24
+
+
+Execution trace 3: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x78bb8654d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x78bb8594b6e0   0x78bb8594b680          ( 0,  5)
+6    2    thread start    seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    relaxed        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x78bb8594b6e8   0x78bb8594b680          ( 0,  8)
+9    3    thread start    seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    relaxed        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    relaxed        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     relaxed        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    relaxed        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     relaxed        0x404020   0x1                 10  ( 0,  5, 14)
+15   3    atomic read     relaxed        0x404018   0x1                 7   ( 0,  8,  0, 15)
+16   2    thread finish   seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5, 16)
+17   3    atomic read     relaxed        0x404020   0x1                 10  ( 0,  8,  0, 17)
+18   1    thread join     seq_cst  0x78bb8654dc00   0x2                     ( 0, 18, 16)
+19   3    thread finish   seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0, 19)
+20   1    thread join     seq_cst  0x78bb8654e020   0x3                     ( 0, 20, 16, 19)
+HASH 1668435893
+------------------------------------------------------------------------------------
+
+Program output from execution 5:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Program has hit assertion in file /home/krishna-patel/Downloads/CS554 Project/cdschecker_tests/peterson_entry.h at line 24
+
+
+Execution trace 5: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x78bb8654d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x78bb8594b6e0   0x78bb8594b680          ( 0,  5)
+6    2    thread start    seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    relaxed        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x78bb8594b6e8   0x78bb8594b680          ( 0,  8)
+9    3    thread start    seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    relaxed        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    relaxed        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     relaxed        0x40401c   0                   3   ( 0,  5, 12)
+13   3    atomic write    relaxed        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     relaxed        0x404020   0                   13  ( 0,  5, 14)
+15   3    atomic read     relaxed        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    thread finish   seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5, 16)
+17   3    atomic read     relaxed        0x404020   0                   13  ( 0,  8,  0, 17)
+18   1    thread join     seq_cst  0x78bb8654dc00   0x2                     ( 0, 18, 16)
+19   3    thread finish   seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0, 19)
+20   1    thread join     seq_cst  0x78bb8654e020   0x3                     ( 0, 20, 16, 19)
+HASH 1667785633
+------------------------------------------------------------------------------------
+
+Program output from execution 11:
+---- BEGIN PROGRAM OUTPUT ----
+---- END PROGRAM OUTPUT   ----
+
+Bug report: 1 bug detected
+  [BUG] Program has hit assertion in file /home/krishna-patel/Downloads/CS554 Project/cdschecker_tests/peterson_entry.h at line 24
+
+
+Execution trace 11: DETECTED BUG(S)
+------------------------------------------------------------------------------------
+#    t    Action type     MO       Location         Value               Rf  CV
+------------------------------------------------------------------------------------
+1    1    thread start    seq_cst  0x78bb8654d7e0   0xdeadbeef              ( 0,  1)
+2    1    init atomic     relaxed        0x404018   0                       ( 0,  2)
+3    1    init atomic     relaxed        0x40401c   0                       ( 0,  3)
+4    1    init atomic     relaxed        0x404020   0                       ( 0,  4)
+5    1    thread create   seq_cst  0x78bb8594b6e0   0x78bb8594b680          ( 0,  5)
+6    2    thread start    seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5,  6)
+7    2    atomic write    relaxed        0x404018   0x1                     ( 0,  5,  7)
+8    1    thread create   seq_cst  0x78bb8594b6e8   0x78bb8594b680          ( 0,  8)
+9    3    thread start    seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0,  9)
+10   2    atomic write    relaxed        0x404020   0x1                     ( 0,  5, 10)
+11   3    atomic write    relaxed        0x40401c   0x1                     ( 0,  8,  0, 11)
+12   2    atomic read     relaxed        0x40401c   0x1                 11  ( 0,  5, 12)
+13   3    atomic write    relaxed        0x404020   0                       ( 0,  8,  0, 13)
+14   2    atomic read     relaxed        0x404020   0                   13  ( 0,  5, 14)
+15   3    atomic read     relaxed        0x404018   0                   2   ( 0,  8,  0, 15)
+16   2    thread finish   seq_cst  0x78bb8654dc00   0xdeadbeef              ( 0,  5, 16)
+17   3    atomic read     relaxed        0x404020   0                   13  ( 0,  8,  0, 17)
+18   1    thread join     seq_cst  0x78bb8654dc00   0x2                     ( 0, 18, 16)
+19   3    thread finish   seq_cst  0x78bb8654e020   0xdeadbeef              ( 0,  8,  0, 19)
+20   1    thread join     seq_cst  0x78bb8654e020   0x3                     ( 0, 20, 16, 19)
+HASH 1785226152
+------------------------------------------------------------------------------------
+
+******* Model-checking complete: *******
+Number of complete, bug-free executions: 7
+Number of redundant executions: 0
+Number of buggy executions: 5
+Number of infeasible executions: 0
+Total executions: 12

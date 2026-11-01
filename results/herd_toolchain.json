@@ -1,0 +1,12 @@
+{
+  "version": "7.58",
+  "commit": "1ca343e16a2038e406d1ac674e7e3a1b722b36c7",
+  "binary_sha256": "098ffede7a1ac95b458a1ab900cc8a9b89669f81b647781f3e929c01097dc7d4",
+  "build_platform": "Ubuntu 26.04 x86_64; glibc 2.42",
+  "compiler": "OCaml 5.4.0",
+  "dune": "3.20.2",
+  "menhir": "20250912",
+  "zarith": "1.14",
+  "source_build": "scripts/build_herd.sh",
+  "upstream_models_unmodified": true
+}

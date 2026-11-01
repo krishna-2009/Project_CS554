@@ -1,0 +1,17 @@
+"RA (Lahav et al. POPL 2016, all reads acquire and all writes release)"
+
+(* Split-event representation of reads/writes and atomic updates.
+   C11 relaxed/SC atomics and native x86 barriers are NOT represented. *)
+include "cos.cat"
+(* A combined update is split into events: include its internal read->write. *)
+let sb = po | rmw
+let hb = (sb | rf)+
+acyclic sb | rf as hb_acyclic
+(* Collapse complete po/rf paths FIRST, then restrict their endpoints.
+   Checking hb&loc with co/fr is equivalent to the per-location check
+   acyclic (sb|rf|co_x|fr_x) for each location x in Definition 4 / Proposition 2. *)
+let hb_loc = hb & loc
+acyclic hb_loc | co | fr as ra_coherence
+(* herd splits atomic update into read/write events. *)
+empty rmw & (fre;coe) as atomic
+show hb,co,fr,rmw

@@ -1,0 +1,32 @@
+g++ -std=c++11 -MMD -MF .libthreads.o.d -fPIC -c libthreads.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .schedule.o.d -fPIC -c schedule.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .model.o.d -fPIC -c model.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .threads.o.d -fPIC -c threads.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .librace.o.d -fPIC -c librace.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .action.o.d -fPIC -c action.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .nodestack.o.d -fPIC -c nodestack.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .clockvector.o.d -fPIC -c clockvector.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .main.o.d -fPIC -c main.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .snapshot-interface.o.d -fPIC -c snapshot-interface.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .cyclegraph.o.d -fPIC -c cyclegraph.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .datarace.o.d -fPIC -c datarace.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .impatomic.o.d -fPIC -c impatomic.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .cmodelint.o.d -fPIC -c cmodelint.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .snapshot.o.d -fPIC -c snapshot.cc -Wall -g -O0 -Iinclude -I.
+gcc -fPIC -c malloc.c -DMSPACES -DONLY_MSPACES -DHAVE_MMAP=0 -Wall -g -O0 -Iinclude -I. -Wno-unused-variable
+g++ -std=c++11 -MMD -MF .mymemory.o.d -fPIC -c mymemory.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .common.o.d -fPIC -c common.cc -Wall -g -O0 -Iinclude -I.
+mymemory.cc:231:34: warning: dynamic exception specifications are deprecated in C++11 [-Wdeprecated]
+  231 | void * operator new(size_t size) throw(std::bad_alloc)
+      |                                  ^~~~~
+mymemory.cc:243:36: warning: dynamic exception specifications are deprecated in C++11 [-Wdeprecated]
+  243 | void * operator new[](size_t size) throw(std::bad_alloc)
+      |                                    ^~~~~
+g++ -std=c++11 -MMD -MF .mutex.o.d -fPIC -c mutex.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .promise.o.d -fPIC -c promise.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .conditionvariable.o.d -fPIC -c conditionvariable.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .context.o.d -fPIC -c context.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .scanalysis.o.d -fPIC -c scanalysis.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .execution.o.d -fPIC -c execution.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -MMD -MF .plugins.o.d -fPIC -c plugins.cc -Wall -g -O0 -Iinclude -I.
+g++ -std=c++11 -shared -o libmodel.so libthreads.o schedule.o model.o threads.o librace.o action.o nodestack.o clockvector.o main.o snapshot-interface.o cyclegraph.o datarace.o impatomic.o cmodelint.o snapshot.o malloc.o mymemory.o common.o mutex.o promise.o conditionvariable.o context.o scanalysis.o execution.o plugins.o -ldl -lrt -rdynamic

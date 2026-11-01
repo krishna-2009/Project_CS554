@@ -1,0 +1,17 @@
+Test peterson_rmw_fence Allowed
+States 7
+0:EAX=0; 0:EBX=0; 1:EAX=1; 1:EBX=0;
+0:EAX=0; 0:EBX=1; 1:EAX=1; 1:EBX=0;
+0:EAX=1; 0:EBX=0; 1:EAX=1; 1:EBX=0;
+0:EAX=1; 0:EBX=1; 1:EAX=0; 1:EBX=0;
+0:EAX=1; 0:EBX=1; 1:EAX=0; 1:EBX=1;
+0:EAX=1; 0:EBX=1; 1:EAX=1; 1:EBX=0;
+0:EAX=1; 0:EBX=1; 1:EAX=1; 1:EBX=1;
+No
+Witnesses
+Positive: 0 Negative: 14
+Condition exists ((0:EAX=0 \/ 0:EBX=0) /\ (1:EAX=0 \/ 1:EBX=1))
+Observation peterson_rmw_fence Never 0 14
+Time peterson_rmw_fence 0.06
+Hash=035ec87aa56d42060efae1eb18b222d1
+

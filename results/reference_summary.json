@@ -1,0 +1,676 @@
+{
+  "checker": "finite operational reference",
+  "count_unit": "distinct final register projections",
+  "results": [
+    {
+      "test": "sb_unfenced",
+      "model": "SC",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both reads zero",
+      "reachable_states": 13,
+      "transitions": 14,
+      "final_register_projections": 3,
+      "positive_register_projections": 0,
+      "both_zero_register_projections": 0,
+      "violation_reachable": false,
+      "final_register_values": [
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ]
+      ],
+      "positive_register_values": [],
+      "first_counterexample_schedule": []
+    },
+    {
+      "test": "sb_unfenced",
+      "model": "TSO",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both reads zero",
+      "reachable_states": 34,
+      "transitions": 58,
+      "final_register_projections": 4,
+      "positive_register_projections": 1,
+      "both_zero_register_projections": 1,
+      "violation_reachable": true,
+      "final_register_values": [
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ]
+      ],
+      "positive_register_values": [
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ]
+      ],
+      "first_counterexample_schedule": [
+        "T0: W x=1 (buffered)",
+        "T0: R y=0 -> r0",
+        "T1: W y=1 (buffered)",
+        "T1: R x=0 -> r0",
+        "T0: flush x=1",
+        "T1: flush y=1"
+      ]
+    },
+    {
+      "test": "sb_mfence",
+      "model": "SC",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both reads zero",
+      "reachable_states": 22,
+      "transitions": 28,
+      "final_register_projections": 3,
+      "positive_register_projections": 0,
+      "both_zero_register_projections": 0,
+      "violation_reachable": false,
+      "final_register_values": [
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ]
+      ],
+      "positive_register_values": [],
+      "first_counterexample_schedule": []
+    },
+    {
+      "test": "sb_mfence",
+      "model": "TSO",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both reads zero",
+      "reachable_states": 31,
+      "transitions": 44,
+      "final_register_projections": 3,
+      "positive_register_projections": 0,
+      "both_zero_register_projections": 0,
+      "violation_reachable": false,
+      "final_register_values": [
+        [
+          [
+            0,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ]
+        ]
+      ],
+      "positive_register_values": [],
+      "first_counterexample_schedule": []
+    },
+    {
+      "test": "peterson_unfenced",
+      "model": "SC",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both entry predicates true",
+      "reachable_states": 62,
+      "transitions": 80,
+      "final_register_projections": 7,
+      "positive_register_projections": 0,
+      "both_zero_register_projections": 0,
+      "violation_reachable": false,
+      "final_register_values": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "positive_register_values": [],
+      "first_counterexample_schedule": []
+    },
+    {
+      "test": "peterson_unfenced",
+      "model": "TSO",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both entry predicates true",
+      "reachable_states": 289,
+      "transitions": 652,
+      "final_register_projections": 12,
+      "positive_register_projections": 5,
+      "both_zero_register_projections": 3,
+      "violation_reachable": true,
+      "final_register_values": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "positive_register_values": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "first_counterexample_schedule": [
+        "T0: W flag0=1 (buffered)",
+        "T0: W turn=1 (buffered)",
+        "T0: R flag1=0 -> r0",
+        "T0: R turn=1 -> r1",
+        "T0: flush flag0=1",
+        "T1: W flag1=1 (buffered)",
+        "T1: W turn=0 (buffered)",
+        "T1: R flag0=1 -> r0",
+        "T1: flush flag1=1",
+        "T1: flush turn=0",
+        "T0: flush turn=1",
+        "T1: R turn=1 -> r1"
+      ]
+    },
+    {
+      "test": "peterson_mfence",
+      "model": "SC",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both entry predicates true",
+      "reachable_states": 88,
+      "transitions": 122,
+      "final_register_projections": 7,
+      "positive_register_projections": 0,
+      "both_zero_register_projections": 0,
+      "violation_reachable": false,
+      "final_register_values": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "positive_register_values": [],
+      "first_counterexample_schedule": []
+    },
+    {
+      "test": "peterson_mfence",
+      "model": "TSO",
+      "scope": "two threads; one finite entry fragment each; no unlock; zero initialization",
+      "property": "both entry predicates true",
+      "reachable_states": 137,
+      "transitions": 230,
+      "final_register_projections": 7,
+      "positive_register_projections": 0,
+      "both_zero_register_projections": 0,
+      "violation_reachable": false,
+      "final_register_values": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "positive_register_values": [],
+      "first_counterexample_schedule": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+diff --git a/mymemory.cc b/mymemory.cc
+index 9e05c36..763f84d 100644
+--- a/mymemory.cc
++++ b/mymemory.cc
+@@ -124,7 +124,7 @@ void model_free(void *ptr)
+ /** Bootstrap allocation. Problem is that the dynamic linker calls require
+  *  calloc to work and calloc requires the dynamic linker to work. */
+ 
+-#define BOOTSTRAPBYTES 4096
++#define BOOTSTRAPBYTES (1024 * 1024)
+ char bootstrapmemory[BOOTSTRAPBYTES];
+ size_t offset = 0;
+ 

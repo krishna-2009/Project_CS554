@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=0.82in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,urlcolor=blue!55!black,linkcolor=black]{hyperref}
+\hypersetup{pdftitle={CS 554 Project Check-In},pdfauthor={Krishna Riteshkumar Patel},pdfsubject={Bounded lock verification across SC, TSO, RA, SRA, and C11}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\newcommand{\sect}[1]{\medskip\noindent\textbf{#1}\par\smallskip}
+\newcommand{\code}[1]{\texttt{#1}}
+\begin{document}
+\begin{center}
+{\Large\bfseries CS 554 Project Check-In}\\[4pt]
+{\bfseries Analyzing and Restoring Mutual Exclusion in Lock Algorithms\\
+Across Hardware and Language Memory Models}\\[5pt]
+Krishna Riteshkumar Patel (UIN: 670178497)\\
+CS 554, Fall 2026
+\end{center}
+\vspace{-5pt}
+
+\sect{1. Progress and implementation}
+The project studies which memory-order assumptions make classical lock entry
+protocols safe, and how stronger synchronization changes the allowed executions.
+Following the proposal feedback, the implementation reuses the existing
+\code{sc.cat} and \code{x86tso.cat} from herdtools7. A repeatable local runner
+executes herd7 7.58 and CDSChecker and saves raw logs, JSON summaries, and
+counterexample DOT graphs alongside the source files.
+
+The current suite contains 13 finite litmus tests and four models, giving 46
+applicable model/test runs. The custom RA and SRA encodings follow the all-release
+write/all-acquire read setting of Lahav et al.~[3]. They are language-level
+abstractions; the x86-shaped test syntax is only an event generator for those
+runs. Store buffering, message passing, and 2+2W provide calibration tests;
+these do not prove equivalence to the course definitions.
+An independent FIFO-store-buffer checker agrees with herd7 on all observed
+register outcomes in eight finite SC/TSO comparisons.
+
+\sect{2. Initial axiomatic results}
+The Peterson tests check the full simultaneous-admission condition, not only the
+case where both threads read zero flags. Let $a_i$ be the other flag read by
+thread $i$, and $t_i$ its read of \code{turn}. Each thread reads both once,
+unconditionally, without retry or unlock. The violation condition is
+\[
+        (a_0=0\ \lor\ t_0=0)\ \land\ (a_1=0\ \lor\ t_1=1).
+\]
+\vspace{-8pt}
+\begin{center}
+\small
+\input{checkin_herd_table.tex}
+\end{center}
+\vspace{-5pt}
+Entries are herd7 \emph{positive execution-witness counts}, not probabilities
+or counts of distinct register states. Zero means the specified bad outcome
+was forbidden in this finite test. A dash marks a hardware fence outside the
+RA/SRA interpretation. The Dekker test covers its first flag-check doorway,
+not its complete retry/turn protocol; the 2+2W outcome is $x=1\land y=1$.
+
+\sect{3. A problem encountered: blocking one outcome is insufficient}
+The plain Peterson fragment is unsafe under TSO, RA, and SRA. An x86
+\code{MFENCE} after each turn store removes the TSO violation. However, one
+acquire-release exchange on a shared dummy location after that store only
+removes the \emph{both-zero} subset under RA/SRA; two violating witnesses remain
+for the full admission condition. One has $a_0=0$, $t_0=1$, $a_1=1$, $t_1=1$:
+thread 0 passes on its flag read, and thread 1 passes on its turn read.
+Replacing the \emph{turn store itself} with an acquire-release exchange is a
+separate variant with zero violating witnesses in all four current models.
+This is evidence for that bounded variant, not an unbounded correctness proof.
+
+\newpage
+\sect{4. C/C++11 experiments with CDSChecker}
+The language-level suite separates an admission assertion from an instrumented
+non-atomic payload race check. The admission test records each thread's private
+decision and asserts after joining, avoiding a shared monitor RMW that could
+change the synchronization. Payload accesses use \code{store\_32}/\code{load\_32}
+from CDSChecker's race detector. Stores use release and loads use acquire in
+the release/acquire variants; \code{acq\_rel} is reserved for suitable RMWs.
+\begin{center}
+\small
+\input{checkin_cds_table.tex}
+\end{center}
+\vspace{-4pt}
+\emph{Total} includes complete, buggy, infeasible, and redundant candidates,
+recorded separately in JSON. Admission bugs are assertion violations. Payload
+race reports identify missing happens-before ordering, not necessarily
+simultaneous occupancy. These results concern the historical CDSChecker
+C11/C++11 implementation, rather than the custom RA/SRA models.
+
+All tests use two worker threads. Admission tests make one guard observation each;
+Peterson payload probes allow two and withdraw on exhaustion. TAS makes one
+try-lock attempt; ticket uses one ticket and at most three serving polls per
+thread. SPSC checks one-item publication without slot reuse. Zero-bug results
+concern these safety bounds, not fairness, termination, or a full queue.
+
+\sect{5. Technical issues and remaining work}
+Herd represents an update with separate read and write events. The RA/SRA
+encodings therefore include its internal \code{rmw} edge in happens-before,
+retain per-location coherence, and check update atomicity. SRA additionally
+requires acyclicity of $hb\cup co$. Calibration confirms that RA admits 2+2W
+while SRA forbids it. Native \code{MFENCE} tests are excluded from RA/SRA runs.
+
+CDSChecker required explicit C++11 compilation, non-PIE harnesses, and an
+increase to its pre-main bootstrap allocator on the current Linux toolchain.
+The patch, compiler options, revisions, bounds, and commands accompany the
+results. Tool errors and incomplete explorations fail the runner.
+
+Remaining work includes full Dekker and repeated Peterson acquisitions,
+the turn-RMW repair in CDSChecker, and simplified RCU with an explicit
+reader-safety property. Queue slot reuse is a stretch
+goal. These extensions remain unverified. The final report will explain
+selected graphs and distinguish bounded evidence from any hand proof.
+
+\sect{6. Included artifacts and references}
+\small
+The accompanying project contains \code{models/}, \code{litmus/},
+\code{cdschecker\_tests/}, \code{scripts/}, \code{results/}, and this report's
+LaTeX source. Run \code{python3 scripts/run\_experiments.py -{}-graphs -{}-pdf}
+from the project root to reproduce the suite and rebuild this writeup.
+
+\footnotesize
+[1] Alglave and Maranget. \emph{herdtools7}, version 7.58, and
+\href{https://diy.inria.fr/doc/herd.html}{herd7 documentation}.
+\href{https://github.com/herd/herdtools7/tree/1ca343e16a2038e406d1ac674e7e3a1b722b36c7}{Pinned source}.\par
+[2] Norris and Demsky. \emph{CDSChecker: Checking Concurrent Data Structures
+Written with C/C++ Atomics}. OOPSLA 2013.
+\href{https://github.com/computersforpeace/model-checker}{Source and usage documentation}.\par
+[3] Lahav, Giannarakis, and Vafeiadis. \emph{Taming Release-Acquire Consistency}.
+POPL 2016. \href{https://plv.mpi-sws.org/sra/full.pdf}{Paper}.
+\end{document}

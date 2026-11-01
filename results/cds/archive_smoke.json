@@ -1,0 +1,75 @@
+{
+  "validation": "source-only archive reproduction",
+  "excluded": [
+    ".git",
+    "*.o",
+    "*.so",
+    ".cs554-build-flags"
+  ],
+  "all_completed": true,
+  "counts": [
+    {
+      "test": "peterson_entry_relaxed",
+      "total": 12,
+      "buggy": 5,
+      "complete_bug_free": 7,
+      "infeasible": 0
+    },
+    {
+      "test": "peterson_entry_acqrel",
+      "total": 12,
+      "buggy": 5,
+      "complete_bug_free": 7,
+      "infeasible": 0
+    },
+    {
+      "test": "peterson_entry_seqcst",
+      "total": 8,
+      "buggy": 0,
+      "complete_bug_free": 8,
+      "infeasible": 0
+    },
+    {
+      "test": "peterson_race_relaxed",
+      "total": 104,
+      "buggy": 39,
+      "complete_bug_free": 17,
+      "infeasible": 48
+    },
+    {
+      "test": "peterson_race_acqrel",
+      "total": 44,
+      "buggy": 7,
+      "complete_bug_free": 37,
+      "infeasible": 0
+    },
+    {
+      "test": "peterson_race_seqcst",
+      "total": 34,
+      "buggy": 0,
+      "complete_bug_free": 34,
+      "infeasible": 0
+    },
+    {
+      "test": "spinlock_acqrel",
+      "total": 6,
+      "buggy": 0,
+      "complete_bug_free": 4,
+      "infeasible": 2
+    },
+    {
+      "test": "ticket_acqrel",
+      "total": 16,
+      "buggy": 0,
+      "complete_bug_free": 8,
+      "infeasible": 6
+    },
+    {
+      "test": "spsc_queue_ra",
+      "total": 2,
+      "buggy": 0,
+      "complete_bug_free": 2,
+      "infeasible": 0
+    }
+  ]
+}

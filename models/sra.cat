@@ -1,0 +1,5 @@
+"SRA (Lahav et al. POPL 2016)"
+include "ra.cat"
+(* Definition 8: union of per-location modification orders together
+   with po/rf must be acyclic. Retain all RA coherence checks. *)
+acyclic hb | co as sra_global

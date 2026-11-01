@@ -1,0 +1,14 @@
+\begin{tabular}{lrr}
+\toprule CDSChecker harness & Total & Buggy \\
+\midrule
+Peterson entry: relaxed & 12 & 5 \\
+Peterson entry: release/acquire & 12 & 5 \\
+Peterson entry: seq\_cst & 8 & 0 \\
+Peterson payload: relaxed & 104 & 39 \\
+Peterson payload: release/acquire & 44 & 7 \\
+Peterson payload: seq\_cst & 34 & 0 \\
+TAS try-lock: acquire/release & 6 & 0 \\
+Ticket lock: acquire/release & 16 & 0 \\
+SPSC one-item publication & 2 & 0 \\
+\bottomrule
+\end{tabular}

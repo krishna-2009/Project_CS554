@@ -1,0 +1,13 @@
+Test twop2w Allowed
+States 3
+[x]=1; [y]=2;
+[x]=2; [y]=1;
+[x]=2; [y]=2;
+No
+Witnesses
+Positive: 0 Negative: 3
+Condition exists ([x]=1 /\ [y]=1)
+Observation twop2w Never 0 3
+Time twop2w 0.00
+Hash=2382b58bdc5464def3edcdc4ad2cd8da
+

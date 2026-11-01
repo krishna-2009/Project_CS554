@@ -1,0 +1,13 @@
+Test sb_rmw_fence Allowed
+States 3
+0:EAX=0; 1:EAX=1;
+0:EAX=1; 1:EAX=0;
+0:EAX=1; 1:EAX=1;
+No
+Witnesses
+Positive: 0 Negative: 4
+Condition exists (0:EAX=0 /\ 1:EAX=0)
+Observation sb_rmw_fence Never 0 4
+Time sb_rmw_fence 0.01
+Hash=ba36d53ebb96877f6cbf6ec5d1d3bd6e
+

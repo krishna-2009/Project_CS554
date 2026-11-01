@@ -1,0 +1,13 @@
+Test mp Allowed
+States 3
+1:EAX=0; 1:EBX=0;
+1:EAX=0; 1:EBX=1;
+1:EAX=1; 1:EBX=1;
+No
+Witnesses
+Positive: 0 Negative: 3
+Condition exists (1:EAX=1 /\ 1:EBX=0)
+Observation mp Never 0 3
+Time mp 0.01
+Hash=30c8228a917a8c1e3bb877591043af24
+

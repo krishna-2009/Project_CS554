@@ -1,0 +1,7 @@
+vendor/** linguist-vendored=true
+results/** linguist-generated=true
+report/checkin_herd_table.tex linguist-generated=true
+report/checkin_cds_table.tex linguist-generated=true
+*.pdf binary
+*.zip binary
+vendor/herdtools7/bin/herd7 binary

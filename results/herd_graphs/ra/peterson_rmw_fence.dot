@@ -1,0 +1,154 @@
+digraph G {
+
+
+/* legend */
+label="Test peterson_rmw_fence, Generic(RA (Lahav et al. POPL 2016, all reads acquire and all writes release))";
+
+
+/* init events */
+eiid12 [label="m: W[y]=0\lInit", shape="box", color="blue"];
+eiid13 [label="n: W[x]=0\lInit", shape="box", color="blue"];
+eiid14 [label="o: W[turn]=0\lInit", shape="box", color="blue"];
+eiid15 [label="p: W[flag1]=0\lInit", shape="box", color="blue"];
+eiid16 [label="q: W[flag0]=0\lInit", shape="box", color="blue"];
+eiid17 [label="r: W[f]=0\lInit", shape="box", color="blue"];
+
+/* the unlocked events */
+subgraph cluster_proc0 { rank=sink; label = "Thread 0"; color=magenta; shape=box;
+eiid0 [label="a: W[flag0]=1\lproc:P0 poi:0\lMOV [flag0],1", shape="box", color="blue"];
+eiid1 [label="b: W[turn]=1\lproc:P0 poi:1\lMOV [turn],1", shape="box", color="blue"];
+eiid2 [label="c: R[f]*=0 (data)\lproc:P0 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid3 [label="d: W[f]*=0\lproc:P0 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid4 [label="e: R[flag1]=0\lproc:P0 poi:4\lMOV EAX,[flag1]", shape="box", color="blue"];
+eiid5 [label="f: R[turn]=1\lproc:P0 poi:5\lMOV EBX,[turn]", shape="box", color="blue"];
+}
+subgraph cluster_proc1 { rank=sink; label = "Thread 1"; color=magenta; shape=box;
+eiid6 [label="g: W[flag1]=1\lproc:P1 poi:0\lMOV [flag1],1", shape="box", color="blue"];
+eiid7 [label="h: W[turn]=0\lproc:P1 poi:1\lMOV [turn],0", shape="box", color="blue"];
+eiid8 [label="i: R[f]*=0 (data)\lproc:P1 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid9 [label="j: W[f]*=0\lproc:P1 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid10 [label="k: R[flag0]=1\lproc:P1 poi:4\lMOV EAX,[flag0]", shape="box", color="blue"];
+eiid11 [label="l: R[turn]=1\lproc:P1 poi:5\lMOV EBX,[turn]", shape="box", color="blue"];
+}
+
+/* the intra_causality_data edges */
+
+
+/* the intra_causality_control edges */
+eiid2 -> eiid3 [label="iico_ctrl", color="grey", fontcolor="grey"];
+eiid8 -> eiid9 [label="iico_ctrl", color="grey", fontcolor="grey"];
+
+/* the poi edges */
+/* the rfmap edges */
+eiid17 -> eiid2 [label="rf", color="red", fontcolor="red"];
+eiid15 -> eiid4 [label="rf", color="red", fontcolor="red"];
+eiid1 -> eiid5 [label="rf", color="red", fontcolor="red"];
+eiid3 -> eiid8 [label="rf", color="red", fontcolor="red"];
+eiid0 -> eiid10 [label="rf", color="red", fontcolor="red"];
+eiid1 -> eiid11 [label="rf", color="red", fontcolor="red"];
+
+
+/* The viewed-before edges */
+eiid2 -> eiid3 [label="rmw", color="brown", fontcolor="brown"];
+eiid8 -> eiid9 [label="rmw", color="brown", fontcolor="brown"];
+eiid0 -> eiid1 [label="hb", color="brown", fontcolor="brown"];
+eiid1 -> eiid2 [label="hb", color="brown", fontcolor="brown"];
+eiid2 -> eiid3 [label="hb", color="brown", fontcolor="brown"];
+eiid3 -> eiid4 [label="hb", color="brown", fontcolor="brown"];
+eiid3 -> eiid8 [label="hb", color="brown", fontcolor="brown"];
+eiid4 -> eiid5 [label="hb", color="brown", fontcolor="brown"];
+eiid6 -> eiid7 [label="hb", color="brown", fontcolor="brown"];
+eiid7 -> eiid8 [label="hb", color="brown", fontcolor="brown"];
+eiid8 -> eiid9 [label="hb", color="brown", fontcolor="brown"];
+eiid9 -> eiid10 [label="hb", color="brown", fontcolor="brown"];
+eiid10 -> eiid11 [label="hb", color="brown", fontcolor="brown"];
+eiid15 -> eiid4 [label="hb", color="brown", fontcolor="brown"];
+eiid17 -> eiid2 [label="hb", color="brown", fontcolor="brown"];
+eiid2 -> eiid3 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid2 -> eiid9 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid4 -> eiid6 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid8 -> eiid9 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid3 -> eiid9 [label="co", color="blue", fontcolor="blue"];
+eiid7 -> eiid1 [label="co", color="blue", fontcolor="blue"];
+eiid14 -> eiid7 [label="co", color="blue", fontcolor="blue"];
+eiid15 -> eiid6 [label="co", color="blue", fontcolor="blue"];
+eiid16 -> eiid0 [label="co", color="blue", fontcolor="blue"];
+eiid17 -> eiid3 [label="co", color="blue", fontcolor="blue"];
+}
+digraph G {
+
+
+/* legend */
+label="Test peterson_rmw_fence, Generic(RA (Lahav et al. POPL 2016, all reads acquire and all writes release))";
+
+
+/* init events */
+eiid12 [label="m: W[y]=0\lInit", shape="box", color="blue"];
+eiid13 [label="n: W[x]=0\lInit", shape="box", color="blue"];
+eiid14 [label="o: W[turn]=0\lInit", shape="box", color="blue"];
+eiid15 [label="p: W[flag1]=0\lInit", shape="box", color="blue"];
+eiid16 [label="q: W[flag0]=0\lInit", shape="box", color="blue"];
+eiid17 [label="r: W[f]=0\lInit", shape="box", color="blue"];
+
+/* the unlocked events */
+subgraph cluster_proc0 { rank=sink; label = "Thread 0"; color=magenta; shape=box;
+eiid0 [label="a: W[flag0]=1\lproc:P0 poi:0\lMOV [flag0],1", shape="box", color="blue"];
+eiid1 [label="b: W[turn]=1\lproc:P0 poi:1\lMOV [turn],1", shape="box", color="blue"];
+eiid2 [label="c: R[f]*=0 (data)\lproc:P0 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid3 [label="d: W[f]*=0\lproc:P0 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid4 [label="e: R[flag1]=1\lproc:P0 poi:4\lMOV EAX,[flag1]", shape="box", color="blue"];
+eiid5 [label="f: R[turn]=0\lproc:P0 poi:5\lMOV EBX,[turn]", shape="box", color="blue"];
+}
+subgraph cluster_proc1 { rank=sink; label = "Thread 1"; color=magenta; shape=box;
+eiid6 [label="g: W[flag1]=1\lproc:P1 poi:0\lMOV [flag1],1", shape="box", color="blue"];
+eiid7 [label="h: W[turn]=0\lproc:P1 poi:1\lMOV [turn],0", shape="box", color="blue"];
+eiid8 [label="i: R[f]*=0 (data)\lproc:P1 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid9 [label="j: W[f]*=0\lproc:P1 poi:3\lXCHG [f],EDX", shape="box", color="blue"];
+eiid10 [label="k: R[flag0]=0\lproc:P1 poi:4\lMOV EAX,[flag0]", shape="box", color="blue"];
+eiid11 [label="l: R[turn]=0\lproc:P1 poi:5\lMOV EBX,[turn]", shape="box", color="blue"];
+}
+
+/* the intra_causality_data edges */
+
+
+/* the intra_causality_control edges */
+eiid2 -> eiid3 [label="iico_ctrl", color="grey", fontcolor="grey"];
+eiid8 -> eiid9 [label="iico_ctrl", color="grey", fontcolor="grey"];
+
+/* the poi edges */
+/* the rfmap edges */
+eiid9 -> eiid2 [label="rf", color="red", fontcolor="red"];
+eiid6 -> eiid4 [label="rf", color="red", fontcolor="red"];
+eiid7 -> eiid5 [label="rf", color="red", fontcolor="red"];
+eiid17 -> eiid8 [label="rf", color="red", fontcolor="red"];
+eiid16 -> eiid10 [label="rf", color="red", fontcolor="red"];
+eiid7 -> eiid11 [label="rf", color="red", fontcolor="red"];
+
+
+/* The viewed-before edges */
+eiid2 -> eiid3 [label="rmw", color="brown", fontcolor="brown"];
+eiid8 -> eiid9 [label="rmw", color="brown", fontcolor="brown"];
+eiid0 -> eiid1 [label="hb", color="brown", fontcolor="brown"];
+eiid1 -> eiid2 [label="hb", color="brown", fontcolor="brown"];
+eiid2 -> eiid3 [label="hb", color="brown", fontcolor="brown"];
+eiid3 -> eiid4 [label="hb", color="brown", fontcolor="brown"];
+eiid4 -> eiid5 [label="hb", color="brown", fontcolor="brown"];
+eiid6 -> eiid7 [label="hb", color="brown", fontcolor="brown"];
+eiid7 -> eiid8 [label="hb", color="brown", fontcolor="brown"];
+eiid8 -> eiid9 [label="hb", color="brown", fontcolor="brown"];
+eiid9 -> eiid2 [label="hb", color="brown", fontcolor="brown"];
+eiid9 -> eiid10 [label="hb", color="brown", fontcolor="brown"];
+eiid10 -> eiid11 [label="hb", color="brown", fontcolor="brown"];
+eiid16 -> eiid10 [label="hb", color="brown", fontcolor="brown"];
+eiid17 -> eiid8 [label="hb", color="brown", fontcolor="brown"];
+eiid2 -> eiid3 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid8 -> eiid3 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid8 -> eiid9 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid10 -> eiid0 [label="fr", color="#ffa040", fontcolor="#ffa040"];
+eiid1 -> eiid7 [label="co", color="blue", fontcolor="blue"];
+eiid9 -> eiid3 [label="co", color="blue", fontcolor="blue"];
+eiid14 -> eiid1 [label="co", color="blue", fontcolor="blue"];
+eiid15 -> eiid6 [label="co", color="blue", fontcolor="blue"];
+eiid16 -> eiid0 [label="co", color="blue", fontcolor="blue"];
+eiid17 -> eiid9 [label="co", color="blue", fontcolor="blue"];
+}

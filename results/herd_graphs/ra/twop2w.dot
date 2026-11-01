@@ -1,0 +1,42 @@
+digraph G {
+
+
+/* legend */
+label="Test twop2w, Generic(RA (Lahav et al. POPL 2016, all reads acquire and all writes release))";
+
+
+/* init events */
+eiid4 [label="e: W[y]=0\lInit", shape="box", color="blue"];
+eiid5 [label="f: W[x]=0\lInit", shape="box", color="blue"];
+eiid6 [label="g: W[turn]=0\lInit", shape="box", color="blue"];
+eiid7 [label="h: W[flag1]=0\lInit", shape="box", color="blue"];
+eiid8 [label="i: W[flag0]=0\lInit", shape="box", color="blue"];
+eiid9 [label="j: W[f]=0\lInit", shape="box", color="blue"];
+
+/* the unlocked events */
+subgraph cluster_proc0 { rank=sink; label = "Thread 0"; color=magenta; shape=box;
+eiid0 [label="a: W[x]=1\lproc:P0 poi:0\lMOV [x],1", shape="box", color="blue"];
+eiid1 [label="b: W[y]=2\lproc:P0 poi:1\lMOV [y],2", shape="box", color="blue"];
+}
+subgraph cluster_proc1 { rank=sink; label = "Thread 1"; color=magenta; shape=box;
+eiid2 [label="c: W[y]=1\lproc:P1 poi:0\lMOV [y],1", shape="box", color="blue"];
+eiid3 [label="d: W[x]=2\lproc:P1 poi:1\lMOV [x],2", shape="box", color="blue"];
+}
+
+/* the intra_causality_data edges */
+
+
+/* the intra_causality_control edges */
+
+/* the poi edges */
+/* the rfmap edges */
+
+
+/* The viewed-before edges */
+eiid0 -> eiid1 [label="hb", color="brown", fontcolor="brown"];
+eiid2 -> eiid3 [label="hb", color="brown", fontcolor="brown"];
+eiid1 -> eiid2 [label="co", color="blue", fontcolor="blue"];
+eiid3 -> eiid0 [label="co", color="blue", fontcolor="blue"];
+eiid4 -> eiid1 [label="co", color="blue", fontcolor="blue"];
+eiid5 -> eiid3 [label="co", color="blue", fontcolor="blue"];
+}
