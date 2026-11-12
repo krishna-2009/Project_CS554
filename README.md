@@ -14,6 +14,11 @@ and protected-data visibility.
 - `submission/CS554_CheckIn_Project.zip`: report, code, models, and results.
 - `docs/submitted_proposal.pdf`: original project proposal.
 
+## AI usage
+
+I used AI to organize the project files,
+draft README.md and edit documentation, report and debug the tool setup and scripts.
+
 ## Build and reproduce
 
 Requirements: Linux, Python 3, GNU Make, g++, and LaTeX with the packages used
